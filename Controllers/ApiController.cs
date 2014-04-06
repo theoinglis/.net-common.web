@@ -24,22 +24,22 @@ namespace Common.Web.Controllers
 
         public virtual string Name { get { return typeof(TEntity).Name; } }
 
-        public virtual IEnumerable<TEntity> Get()
+        public virtual HttpResponseMessage Get()
         {
-            return Repository.Get();
+            return Request.CreateResponse(HttpStatusCode.OK, Repository.Get());
         }
 
-        public virtual TEntity Get(TId id)
+        public virtual HttpResponseMessage Get(TId id)
         {
             var item = Repository.GetById(id);
 
             if (item == null)
             {
-                throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.NotFound,
-                    string.Format("Could not find the required {0}", Name)));
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound,
+                    string.Format("Could not find the required {0}", Name));
             }
 
-            return item;
+            return Request.CreateResponse(HttpStatusCode.OK, item);
         }
 
         public virtual HttpResponseMessage Post(TEntity item)
