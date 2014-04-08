@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ApiController.cs" />
+    <Compile Include="ExtensionMethods\ResponseExtensions.cs" />
     <Compile Include="Filters\ExceptionFilter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -64,7 +65,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common.Db\Common.Db.csproj">
+    <ProjectReference Include="..\.net-common.db\Common.Db.csproj">
       <Project>{30b4ae66-3aa2-42e3-b97b-dfaa934971b2}</Project>
       <Name>Common.Db</Name>
     </ProjectReference>
